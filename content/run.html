@@ -128,7 +128,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li class='has-children'><a href='HW1.html'>HW1</a><ul class='dropdown'><li><a href='run-1.html'>run-1</a><li><a href='run-2.html'>run-2</a></li></ul><li class='has-children'><a href='HW2.html'>HW2</a><ul class='dropdown'><li><a href='test.html'>test</a></li></ul><li><a href='HW3.html'>HW3</a><li><a href='Final Project.html'>Final Project</a></li>
+                     <li><a href='About.html'>About</a><li class='has-children'><a href='HW1.html'>HW1</a><ul class='dropdown'><li><a href='exam.html'>exam</a><li><a href='run.html'>run</a></li></ul><li class='has-children'><a href='HW2.html'>HW2</a><ul class='dropdown'><li><a href='test.html'>test</a></li></ul><li><a href='HW3.html'>HW3</a><li><a href='Final Project.html'>Final Project</a></li>
                       </ul>
                 </nav>
               </div>
@@ -139,7 +139,7 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">HW1 << <a href='HW1.html'>Previous</a> <a href='run-2.html'>Next</a> >> run-2<br /><h1>run-1</h1>
+    <div id="tipue_search_content">exam << <a href='exam.html'>Previous</a> <a href='HW2.html'>Next</a> >> HW2<br /><h1>run</h1>
 <!-- 導入 brython 程式庫 -->
 <script src="/get_page/cmsimde/static/brython.js"></script>
 <script src="/get_page/cmsimde/static/brython_stdlib.js"></script>
@@ -211,7 +211,38 @@ run()
 </script>
 </p>
 <p><!-- 用來顯示程式碼的 editor 區域 --></p>
-<div id="kw_editor" style="width: 600px; height: 300px;"></div>
+<div id="kw_editor" style="width: 600px; height: 300px;">
+<pre>from browser import html
+from browser import document as doc
+import browser.timer
+
+canvas = html.CANVAS(width = 300, height = 300)
+canvas.id = "game-board1"
+brython_div = doc["brython_div3"]
+brython_div &lt;= canvas
+ctx = canvas.getContext("2d")
+
+px = 0
+py = 150
+width = 20
+height = 20
+speed = 2
+def game():
+    global px, py, width, height, speed
+    ctx.clearRect(px, py, width, height)
+    ctx.fillStyle = "red"
+    if px &lt; (canvas.width/2):
+        px += speed
+    else:
+        py += speed
+    
+        if py &lt; 0 or (py + height) &gt; canvas.height:
+            speed = -speed
+            
+    ctx.fillRect(px, py, width, height)
+    
+browser.timer.set_interval(game, 10)</pre>
+</div>
 <p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
 <!-- 存擋表單開始 --><form><label>Filename: <input id="kw_filename" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src', 'kw_filename');" type="submit" value="Save"/></form><!-- 存擋表單結束 -->
 <p></p>
@@ -228,7 +259,8 @@ run()
 <script src="https://mde.tw/cp2021/cmsimde/static/gearUtils-09.js"></script>
 <script src="https://mde.tw/cp2021/cmsimde/static/SVGpathUtils-6v03-min.js"></script>
 <script src="https://mde.tw/cp2021/cmsimde/static/sylvester.js"></script>
-<script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script><br />HW1 << <a href='HW1.html'>Previous</a> <a href='run-2.html'>Next</a> >> run-2</div>
+<script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script>
+<br />exam << <a href='exam.html'>Previous</a> <a href='HW2.html'>Next</a> >> HW2</div>
         
     <!-- footer -->
       <div class="container">
